@@ -21,6 +21,7 @@ jobs:
         run: |
           SITE_NAMES=$(cat << EOF
             [${{ github.event.inputs.site_names }}]
+            EOF
           )
           echo "::set-output name=site_names::$SITE_NAMES"
 
