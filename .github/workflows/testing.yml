@@ -1,0 +1,30 @@
+name: Demonstration
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      site_names:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: "Site Names with naming convention 'sitename-abbvie-com' and comma separated"
+        # Input has to be provided for the workflow to run
+        required: true
+
+jobs:
+  prepare-site-names:
+    name: Prepare site names
+    runs-on: ubuntu-latest
+    outputs:
+      site_names: ${{ steps.prepare-site-names.outputs.site_names }}
+    steps:
+      - name: prepare-site-names
+        id: prepare-site-names
+        run: |
+          echo ${{ github.event.inputs.site_names }}
+          echo "::set-output name=site_names::[${{ github.event.inputs.site_names }}]"
+
+  check-site-names:
+    needs: prepare-site-names
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "${{ needs.prepare-site-names.outputs.site_names }}"
