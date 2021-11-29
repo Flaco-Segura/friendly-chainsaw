@@ -26,5 +26,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        SITE_NAMES=${{ needs.prepare-site-names.outputs.site_names }})
-        echo ${SITE_NAMES//"\/}
+        echo ${${{ needs.prepare-site-names.outputs.site_names }}//"\/}
