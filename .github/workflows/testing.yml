@@ -19,11 +19,12 @@ jobs:
       - name: prepare-site-names
         id: prepare-site-names
         run: |
-          echo "::set-output name=site_names::{\"include\":[${{ github.event.inputs.site_names }}]}"
+          echo "::set-output name=site_names::${{ github.event.inputs.site_names }}"
 
   check-site-names:
     needs: prepare-site-names
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo ${{ fromJSON(needs.prepare-site-names.outputs.site_names) }})
+        SITE_NAMES=${{ needs.prepare-site-names.outputs.site_names }})
+        echo ${SITE_NAMES//"\/}
