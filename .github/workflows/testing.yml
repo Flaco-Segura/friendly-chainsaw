@@ -19,7 +19,7 @@ jobs:
       - name: prepare-site-names
         id: prepare-site-names
         run: |
-          echo "::set-output name=site_names::${{ toJSON([${{ github.event.inputs.site_names }}]) }}"
+          echo "::set-output name=site_names::{\"include\":[${{ github.event.inputs.site_names }}]}"
 
   check-site-names:
     needs: prepare-site-names
