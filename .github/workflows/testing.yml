@@ -19,15 +19,11 @@ jobs:
       - name: prepare-site-names
         id: prepare-site-names
         run: |
-          SITE_NAMES=$(cat << EOF
-            [${{ github.event.inputs.site_names }}]
-            EOF
-          )
-          echo "::set-output name=site_names::$SITE_NAMES"
+          echo "::set-output name=site_names::${{ toJSON([${{ github.event.inputs.site_names }}]) }}"
 
   check-site-names:
     needs: prepare-site-names
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo format(${{ needs.prepare-site-names.outputs.site_names }})
+        echo ${{ fromJSON(needs.prepare-site-names.outputs.site_names) }})
