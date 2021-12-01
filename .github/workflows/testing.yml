@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-       site_name: ${{ fromJSON(needs.prepare-site-names.outputs.site_names) }}
+       site_name: [dlserver-net, alc-dlserver-net, immunology-dlserver-net, marketingtraining-dlserver-net, neuroscience-dlserver-net, oncology-dlserver-net, specialty-dlserver-net, hepatology-dlserver-net, immunology2-dlserver-net, patientoutreach-dlserver-net, usmedical-dlserver-net, womenshealth-dlserver-net, marketaccess-dlserver-net, businesstools-dlserver-net, homeoffice-dlserver-net, speakerprograms-dlserver-net, a3-abvhostingservices-com, allianceforendo-com, ibdperspectives-com, whatsyoursorespot-com, mappinghepc-com, crohnscolitispr-com, ahorroscontigo-com, skyrizi-nl, reumanizar-es, crohn-colitis-info-at, acne-inversa-at, hepatitcsizyasam-com, psodisk-it, sedefleyasam-com, duodopakademi-se, dontturnyourbackonit-com-au, dryeye-com-au, productinformatie-abbvie-nl]
     
     steps:
     - run: |
