@@ -26,4 +26,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo ${${{ needs.prepare-site-names.outputs.site_names }}//"\/}
+        SITE_NAMES=', ' read -r -a array <<< ${{ needs.prepare-site-names.outputs.site_names }}
+        echo $SITE_NAMES
