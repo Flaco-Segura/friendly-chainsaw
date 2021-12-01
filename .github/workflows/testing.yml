@@ -19,7 +19,7 @@ jobs:
       - name: prepare-site-names
         id: prepare-site-names
         run: |
-          echo "::set-output name=site_names::{\"site_name\":[${{ github.event.inputs.site_names }}]}"
+          echo "::set-output name=site_names::{\"site_name\":["a", "b", "c"]}"
 
   check-site-names:
     needs: prepare-site-names
