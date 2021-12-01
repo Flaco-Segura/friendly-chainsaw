@@ -14,14 +14,20 @@ jobs:
     name: Prepare site names
     runs-on: ubuntu-latest
     outputs:
-      site_names: [${{ github.event.inputs.site_names }}]
+      site_names: ${{ steps.prepare-site-names.outputs.site_names }}
+    steps:
+      - name: prepare-site-names
+        id: prepare-site-names
+        run: |
+          SITE_NAMES=read -r -a array <<< "${{ github.event.inputs.site_names }}"
+          echo "::set-output name=site_names::${SITE_NAMES}"
 
   check-site-names:
     needs: prepare-site-names
     runs-on: ubuntu-latest
     strategy:
       matrix:
-       site_name: 
+       site_name: ${{ needs.prepare-site-names.outputs.site_names }}
     
     steps:
     - run: |
