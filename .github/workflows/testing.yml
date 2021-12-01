@@ -24,7 +24,10 @@ jobs:
   check-site-names:
     needs: prepare-site-names
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+       site_name: ${{ needs.prepare-site-names.outputs.site_names }}
+    
     steps:
     - run: |
-        SITE_NAMES=', ' read -r -a array <<< ${{ needs.prepare-site-names.outputs.site_names }}
-        echo $SITE_NAMES
+        echo ${{ matrix.site_name }}
