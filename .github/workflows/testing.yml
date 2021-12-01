@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-       site_name: ${{ needs.prepare-site-names.outputs.site_names }}
+       site_name: ${{ fromJSON(needs.prepare-site-names.outputs.site_names) }}
     
     steps:
     - run: |
