@@ -19,8 +19,9 @@ jobs:
       - name: prepare-site-names
         id: prepare-site-names
         run: |
-          echo (${{ github.event.inputs.site_names }}[@])
-          echo "::set-output name=site_names::(${{ github.event.inputs.site_names }})"
+          SITE_NAMES=${{ github.event.inputs.site_names }}
+          SITE_NAMES_ARRAY=($SITE_NAMES)
+          echo "::set-output name=site_names::${SITE_NAMES_ARRAY}"
 
   check-site-names:
     needs: prepare-site-names
