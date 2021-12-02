@@ -21,7 +21,7 @@ jobs:
         run: |
           SITE_NAMES=$(echo ${{ github.event.inputs.site_names }} | sed 's/ //g')
           echo ${SITE_NAMES}
-          IFS=', ' read -ra SITE_NAMES_ARRAY <<< "${SITE_NAMES}"
+          IFS=',' read -ra SITE_NAMES_ARRAY <<< "${SITE_NAMES}"
           FORMATTED_TEXT="{\"site_name\": ["
           for ELEMENT in ${SITE_NAMES_ARRAY[@]}; do
             FORMATTED_TEXT+="\"${ELEMENT}\","
