@@ -19,16 +19,21 @@ jobs:
       - name: prepare-site-names
         id: prepare-site-names
         run: |
-          echo "::set-output name=site_names::${{ toJson(github.event.inputs.site_names) }}"
+          SITE_NAMES=', ' read -ra SITE_NAMES_ARRAY <<< "${{ github.event.inputs.site_names }}"
+          for i in "${SITE_NAMES_ARRAY[@]}"
+          do
+            echo $i
+          done
+          # echo "::set-output name=site_names::${{ github.event.inputs.site_names }}"
 
-  check-site-names:
-    needs: prepare-site-names
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-       site_name: ${{ fromJson(needs.prepare-site-names.outputs.site_names) }}
+  # check-site-names:
+    # needs: prepare-site-names
+    # runs-on: ubuntu-latest
+    # strategy:
+      # matrix:
+       # site_name: ${{ fromJson(needs.prepare-site-names.outputs.site_names) }}
     
-    steps:
-    - run: |
+    # steps:
+    # - run: |
         # echo ${{ fromJson(needs.prepare-site-names.outputs.site_names) }}
-        echo ${{ matrix.site_name }}
+        # echo ${{ matrix.site_name }}
