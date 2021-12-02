@@ -19,7 +19,7 @@ jobs:
       - name: prepare-site-names
         id: prepare-site-names
         run: |
-          SITE_NAMES=${{ github.event.inputs.site_names }}# | sed 's/ //g'
+          SITE_NAMES=${{ github.event.inputs.site_names }}
           echo ${SITE_NAMES}
           IFS=', ' read -ra SITE_NAMES_ARRAY <<< "${SITE_NAMES}"
           FORMATTED_TEXT="{\"site_name\": ["
