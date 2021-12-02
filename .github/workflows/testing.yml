@@ -37,6 +37,10 @@ jobs:
     strategy:
       matrix: ${{ fromJson(needs.prepare-site-names.outputs.site_names) }}
        # site_name: ${{ fromJson(needs.prepare-site-names.outputs.site_names) }}
+      fail-fast: false
+    container:
+      image: amazon/aws-cli:latest
+    environment: dev
     
     steps:
     - run: |
