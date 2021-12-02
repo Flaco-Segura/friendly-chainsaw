@@ -19,9 +19,9 @@ jobs:
       - name: prepare-site-names
         id: prepare-site-names
         run: |
-          IFS=';' read -ra SITE_NAMES_ARRAY <<< "${{ github.event.inputs.site_names }}"
+          IFS=' ' read -ra SITE_NAMES_ARRAY <<< "${{ github.event.inputs.site_names }}"
           FORMATTED_TEXT="{\"site_name\": ["
-          for ELEMENT in ${SITE_NAMES_ARRAY}; do
+          for ELEMENT in ${SITE_NAMES_ARRAY[@]}; do
             FORMATTED_TEXT+="\"${ELEMENT}\" "
           done
           FORMATTED_TEXT+="]}"
