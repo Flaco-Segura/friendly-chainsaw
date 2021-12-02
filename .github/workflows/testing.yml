@@ -24,11 +24,11 @@ jobs:
   check-site-names:
     needs: prepare-site-names
     runs-on: ubuntu-latest
-    # strategy:
-      # matrix:
-       # site_name: ${{ needs.prepare-site-names.outputs.site_names }}
+    strategy:
+      matrix:
+       site_name: ${{ fromJson(needs.prepare-site-names.outputs.site_names) }}
     
     steps:
     - run: |
-        echo ${{ fromJson(needs.prepare-site-names.outputs.site_names) }}
-        # echo ${{ matrix.site_name }}
+        # echo ${{ fromJson(needs.prepare-site-names.outputs.site_names) }}
+        echo ${{ matrix.site_name }}
