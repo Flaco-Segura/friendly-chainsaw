@@ -24,9 +24,9 @@ jobs:
           for ELEMENT in ${SITE_NAMES_ARRAY}; do
             FORMATTED_TEXT+="\"${ELEMENT}\", "
           done
-          FORMATED_TEXT+="]}"          
+          FORMATTED_TEXT+="]}"      
           
-          echo "::set-output name=site_names::${{ $FORMATTED TEXT }}"
+          echo "::set-output name=site_names::${FORMATTED_TEXT}"
 
   check-site-names:
     needs: prepare-site-names
