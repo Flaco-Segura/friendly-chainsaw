@@ -2,12 +2,12 @@ name: Testing case
 
 on:
   workflow_dispatch:
-  inputs:
+    inputs:
       database_type:
 jobs:
   testing_case:
     name: Testing case
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: testing case
         run: |
