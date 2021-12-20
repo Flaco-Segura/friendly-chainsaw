@@ -15,5 +15,4 @@ jobs:
           mysql) SITE_DATABASE="Es un mysql" ;;
           postgresql) SITE_DATABASE="Es un postgresql" ;;
           esca
-      
           echo ${SITE_DATABASE}
