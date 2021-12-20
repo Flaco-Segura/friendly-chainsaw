@@ -6,15 +6,14 @@ on:
       database_type:
 jobs:
   testing_case:
+    name: Testing case
     runs_on: ubuntu-latest
     steps:
       - name: testing case
-      run: |
-      case ${{ github.event.inputs.database_type }} in
-      mysql)
-        SITE_DATABASE="Es un mysql" ;;
-      postgresql)
-        SITE_DATABASE="Es un postgresql" ;;
-      esca
+        run: |
+          case ${{ github.event.inputs.database_type }} in
+          mysql) SITE_DATABASE="Es un mysql" ;;
+          postgresql) SITE_DATABASE="Es un postgresql" ;;
+          esca
       
-      echo ${SITE_DATABASE}
+          echo ${SITE_DATABASE}
