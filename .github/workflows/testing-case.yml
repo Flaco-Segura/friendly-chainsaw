@@ -12,7 +12,11 @@ jobs:
       - name: testing case
         run: |
           case ${{ github.event.inputs.database_type }} in
-          mysql) SITE_DATABASE="Es un mysql" ;;
-          postgresql) SITE_DATABASE="Es un postgresql" ;;
-          esca
+          mysql)
+            SITE_DATABASE="Es un mysql"
+            ;;
+          postgresql)
+            SITE_DATABASE="Es un postgresql"
+            ;;
+          esac
           echo ${SITE_DATABASE}
