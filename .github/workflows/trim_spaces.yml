@@ -9,6 +9,12 @@ jobs:
     name: Trim Spaces
     runs-on: ubuntu-latest
     steps:
-    - name: testing case
+    - name: Prepare Input
+      id: prepare-input
       run: |
-        echo ${{ core.getInput('database_type', { trimWhitespace: false }) }}
+        FORMATTED_INPUT=$(echo ${{ github.event.inputs.site_names }} | xargs )
+        echo "::set-output name=site_name::${FORMATTED_INPUT}"
+    - name: Echo Input
+      run: |
+        echo ${{ needs.prepare-input.outputs.site_name }}
+        
