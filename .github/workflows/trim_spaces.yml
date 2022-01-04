@@ -8,6 +8,8 @@ jobs:
   trim_spaces:
     name: Trim Spaces
     runs-on: ubuntu-latest
+    outputs:
+      site_nams: ${{ steps.prepare-input.outputs.site_name }}
     steps:
     - name: Prepare Input
       id: prepare-input
