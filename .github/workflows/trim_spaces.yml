@@ -3,7 +3,7 @@ name: Trim spaces
 on:
   workflow_dispatch:
     inputs:
-      database_type:
+      site_names:
 jobs:
   trim_spaces:
     name: Trim Spaces
