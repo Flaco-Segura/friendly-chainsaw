@@ -12,7 +12,7 @@ jobs:
     - name: Prepare Input
       id: prepare-input
       run: |
-        FORMATTED_INPUT=echo ${{ github.event.inputs.site_names }} | xargs
+        FORMATTED_INPUT=$(echo ${{ github.event.inputs.site_names }} | sed 's/ //g')
         echo "::set-output name=site_name::${FORMATTED_INPUT}"
     - name: Echo Input
       run: |
