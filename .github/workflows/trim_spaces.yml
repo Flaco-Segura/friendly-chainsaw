@@ -1,0 +1,12 @@
+name: Trim spaces
+
+on:
+  workflow_dispatch:
+    inputs:
+      database_type:
+jobs:
+  trim_spaces:
+    name: Trim Spaces
+    runs-on: ubuntu-latest
+    steps:
+      echo ${{ core.getInput('database_type', { trimWhitespace: false }) }}
