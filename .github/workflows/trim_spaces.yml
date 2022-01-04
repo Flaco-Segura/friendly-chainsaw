@@ -17,6 +17,7 @@ jobs:
   echo_input:
     name: Echo Input
     runs-on: ubuntu-latest
+    needs: trim_spaces
     steps:
     - name: Echo Input
       run: |
