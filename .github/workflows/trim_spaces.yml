@@ -8,21 +8,13 @@ jobs:
   trim_spaces:
     name: Trim Spaces
     runs-on: ubuntu-latest
-    outputs:
-      site_name: ${{ steps.prepare-input.outputs.site_name }}
     steps:
     - name: Prepare Input
       id: prepare-input
       run: |
         FORMATTED_INPUT=$(echo ${{ github.event.inputs.site_names }} | xargs)
         echo ${FORMATTED_INPUT}
-        echo "::set-output name=site_name::${FORMATTED_INPUT}"
-  echo_input:
-    name: Echo Input
-    runs-on: ubuntu-latest
-    needs: trim_spaces
-    steps:
+        echo "::set-output name=FORMATTED_SITE_NAME::${FORMATTED_INPUT}"
     - name: Echo Input
       run: |
-        echo ${{ steps.prepare-input.outputs.site_name }}
-        
+        echo ${{ steps.prepare-input.outputs.FORMATTED_SITE_NAME }}   
